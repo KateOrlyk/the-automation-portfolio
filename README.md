@@ -9,7 +9,9 @@
 the-automation-portfolio/
 
 ├── src/
+
 │ └── test/
+
 │ ├── java/
 │ │ ├── pages/ # Page Object classes
 │ │ └── tests/ # Test classes
