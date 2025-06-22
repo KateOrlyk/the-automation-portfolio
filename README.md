@@ -7,6 +7,7 @@
 # 📁 Project Structure
 
 the-automation-portfolio/
+
 ├── src/
 │ └── test/
 │ ├── java/
