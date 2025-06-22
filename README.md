@@ -6,17 +6,15 @@
 
 # 📁 Project Structure
 
-the-automation-portfolio/
-
-├── src/
-│ └── test/
-
-│ ├── java/
-│ │ ├── pages/ # Page Object classes
-│ │ └── tests/ # Test classes
-├── pom.xml # Maven configuration
-├── README.md # Project overview and instructions
-└── .gitignore # Ignored files
+- **the-automation-portfolio/**
+  - **src/**
+    - **test/**
+      - **java/**
+        - **pages/** &ndash; Page Object classes
+        - **tests/** &ndash; Test classes
+- **pom.xml** &ndash; Maven configuration
+- **README.md** &ndash; Project overview and instructions
+- **.gitignore** &ndash; Ignored files
 
 ---
 
