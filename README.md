@@ -9,7 +9,6 @@
 the-automation-portfolio/
 
 ├── src/
-
 │ └── test/
 
 │ ├── java/
