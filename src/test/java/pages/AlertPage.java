@@ -20,15 +20,16 @@ public class AlertPage {
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
     }
 
-    public void clickJSAlert() {
+    // private low-level clicks
+    private void clickJSAlert() {
         driver.findElement(jsAlertButton).click();
     }
 
-    public void clickJSConfirm() {
+    private void clickJSConfirm() {
         driver.findElement(jsConfirmButton).click();
     }
 
-    public void clickJSPrompt() {
+    private void clickJSPrompt() {
         driver.findElement(jsPromptButton).click();
     }
 
@@ -36,6 +37,7 @@ public class AlertPage {
         return driver.switchTo().alert();
     }
 
+    // public high-level actions
     public void acceptAlert() {
         switchToAlert().accept();
     }
