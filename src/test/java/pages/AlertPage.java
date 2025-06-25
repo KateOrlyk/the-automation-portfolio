@@ -38,19 +38,26 @@ public class AlertPage {
     }
 
     // public high-level actions
-    public void acceptAlert() {
+    public void acceptJSAlert() {
+        clickJSAlert();
         switchToAlert().accept();
     }
 
-    public void dismissAlert() {
+    public void dismissJSConfirm() {
+        clickJSConfirm();
         switchToAlert().dismiss();
     }
 
-    public void sendTextToAlert(String text) {
-        switchToAlert().sendKeys(text);
+    public void sendTextToJSPrompt(String text) {
+        clickJSPrompt();
+        Alert alert = switchToAlert();
+        alert.sendKeys(text);
+        alert.accept();
     }
 
     public String getResultText() {
-        return driver.findElement(resultText).getText().trim();
+        return driver.findElement(resultText)
+                .getText()
+                .trim();
     }
 }
