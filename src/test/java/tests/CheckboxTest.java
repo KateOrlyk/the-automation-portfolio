@@ -1,28 +1,23 @@
 package tests;
 
-import org.junit.jupiter.api.AfterEach;
+import core.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.CheckboxPage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CheckboxTest {
-    private WebDriver driver;
+public class CheckboxTest extends BaseTest {
     private CheckboxPage checkboxPage;
 
     @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void initPage() {
         checkboxPage = new CheckboxPage(driver);
         checkboxPage.openPage();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Checkbox #{0} should be {1}")
     @CsvSource({
             "0, true",
             "0, false",
@@ -32,13 +27,10 @@ public class CheckboxTest {
     public void parameterizedCheckboxTest(int index, boolean expectedState) {
         checkboxPage.setCheckbox(index, expectedState);
         boolean actualState = checkboxPage.isChecked(index);
-        assertEquals(expectedState, actualState, "Чекбокс " + index + " має бути в стані " + expectedState);
-    }
-
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        assertEquals(
+                expectedState,
+                actualState,
+                "Checkbox " + index + " must be " + expectedState
+        );
     }
 }
