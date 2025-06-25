@@ -11,44 +11,30 @@ import pages.AlertPage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AlertTest extends BaseTest {
-    private WebDriver driver;
     private AlertPage alertPage;
 
     @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void initPage() {
         alertPage = new AlertPage(driver);
         alertPage.openPage();
     }
 
     @Test
     public void jsAlertTest() {
-        alertPage.clickJSAlert();
-        alertPage.acceptAlert();
+        alertPage.acceptJSAlert();                  // instead of alertPage.acceptAlert()
         assertEquals("You successfully clicked an alert", alertPage.getResultText());
     }
 
     @Test
     public void jsConfirmDismissTest() {
-        alertPage.clickJSConfirm();
-        alertPage.dismissAlert();
+        alertPage.dismissJSConfirm();               // instead of alertPage.dismissAlert()
         assertEquals("You clicked: Cancel", alertPage.getResultText());
     }
 
     @Test
     public void jsPromptSendTextTest() {
         String input = "Hello!";
-        alertPage.clickJSPrompt();
-        alertPage.sendTextToAlert(input);
-        alertPage.acceptAlert();
+        alertPage.sendTextToJSPrompt(input);        // instead of alertPage.sendTextToAlert(input)
         assertEquals("You entered: " + input, alertPage.getResultText());
-    }
-
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }
