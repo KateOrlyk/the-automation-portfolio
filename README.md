@@ -1,17 +1,18 @@
 # the-automation-portfolio
 
-**Automation portfolio:** Selenium WebDriver + JUnit tests for https://the-internet.herokuapp.com/
+**Automation portfolio:** Selenium WebDriver + JUnit tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/)
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 - **the-automation-portfolio/**
-  - **src/**
-    - **test/**
-      - **java/**
-        - **pages/** &ndash; Page Object classes
-        - **tests/** &ndash; Test classes
+    - **src/**
+        - **test/**
+            - **java/**
+                - **core/** &ndash; BaseTest, BasePage and utilities
+                - **pages/** &ndash; Page Object classes
+                - **tests/** &ndash; Test classes
 - **pom.xml** &ndash; Maven configuration
 - **README.md** &ndash; Project overview and instructions
 - **.gitignore** &ndash; Ignored files
@@ -20,56 +21,79 @@
 
 ## 🚀 Technologies
 
-- **Java 17** (Eclipse Temurin)  
-- **Selenium 4** (WebDriver)  
-- **JUnit 5** (junit-jupiter & params)  
-- **Maven** (build & dependency management)  
-- **ChromeDriver** (browser automation)
+- **Java 17** (Eclipse Temurin)
+- **Selenium 4** WebDriver
+- **JUnit 5** (junit-jupiter & params)
+- **Maven**
+- **ChromeDriver**
 
 ---
 
 ## 📋 Test Scenarios
 
-1. **Login Page**  
-   - Positive and negative flows, parameterized tests  
-2. **Checkboxes**  
-   - Toggle checkboxes on and off, default state verification, parameterized tests  
-3. **JavaScript Alerts**  
-   - `alert()`, `confirm()`, `prompt()` interactions  
-4. **(Coming soon)**  
-   - Dynamic Loading  
-   - Dropdown selection  
-   - …and more
+1. **Login Page**
+    - Positive & negative flows, parameterized tests
+2. **Checkboxes**
+    - Toggle checkboxes, verify state
+3. **JavaScript Alerts**
+    - `alert()`, `confirm()`, `prompt()`
+4. **(Coming soon)**
+    - Dynamic Loading
+    - Dropdowns
+    - …and more
 
 ---
 
 ## ⚙️ Getting Started
 
-1. **Clone the repository**  
+1. **Clone the repository**
+   ```bash
    git clone https://github.com/KateOrlyk/the-automation-portfolio.git
    cd the-automation-portfolio
-Ensure ChromeDriver is in your PATH (or configure the path in code)
+2. **Ensure ChromeDriver is in your PATH**
+3. **Run tests**
+   ```bash
+   mvn clean test
 
-# Build & run tests
+---
 
-mvn clean test
-📈 Test Reports
-Test results appear in the console by default.
+## 📈 Allure Reports
 
-To generate an HTML report with Allure (optional):
+1. **Install Allure CLI** (choose one):
+- Scoop (Windows, non-admin PowerShell)
+  ```powershell
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   iwr -useb get.scoop.sh | iex
+   scoop install allure
+- **Chocolatey (Windows)**
+    ```powershell
+  choco install allure.commandline -y
+- **Homebrew (macOS)**
+    ```bash
+    brew install allure
+- **Manual**
+Download ZIP from [Allure Releases](https://github.com/allure-framework/allure2/releases), unpack, and add bin/ to your PATH.
 
-mvn clean test allure:serve
+2. **Generate and view report**
+    ```bash
+   allure serve allure-results
 
-# 🔮 Next Steps
-Add WebDriverWait for dynamic content
+3. **(Optional) via Maven**
+    ```bash
+   mvn clean test verify
+    mvn allure:serve
 
-Integrate Allure with screenshots on failure
+---
 
-Implement parallel test execution (JUnit 5)
+## 🔮 Next Steps
+- Add explicit waits (`WebDriverWait`)
+- Capture screenshots on failure
+- Enable parallel test execution (JUnit 5)
+- Configure CI/CD (GitHub Actions)
 
-Configure CI/CD (GitHub Actions) for automatic runs
+---
 
-# 👩‍💻 Author
+👩‍💻 Author
 Kateryna Orlyk
 QA Automation Engineer
-LinkedIn: www.linkedin.com/in/kateryna-orlyk-a67a9b264
+[LinkedIn](https://www.linkedin.com/in/kateryna-orlyk-a67a9b264/)
