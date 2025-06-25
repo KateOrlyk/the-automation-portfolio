@@ -1,50 +1,37 @@
 package pages;
 
-import org.openqa.selenium.By;
+import core.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-import java.time.Duration;
+public class LoginPage extends BasePage {
+    @FindBy(id = "username")
+    private WebElement usernameInput;
 
-public class LoginPage {
-    private WebDriver driver;
+    @FindBy(id = "password")
+    private WebElement passwordInput;
 
-    // Локатори
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By loginButton = By.cssSelector("button[type='submit']");
-    private By alertMessage = By.id("flash");
+    @FindBy(css = "button[type='submit']")
+    private WebElement loginButton;
 
-    // Конструктор
+    @FindBy(id = "flash")
+    private WebElement flashMessage;
+
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    // Методи дій
-    public void enterUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
-    }
-
-    public void enterPassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
-    }
-
-    public void clickLogin() {
-        driver.findElement(loginButton).click();
-    }
-
-    public String getAlertText() {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(alertMessage));
-        return driver.findElement(alertMessage)
-                .getText()
-                .trim();
-    }
-
+    @Step("Login as {username}")
     public void loginAs(String username, String password) {
-        enterUsername(username);
-        enterPassword(password);
-        clickLogin();
+        type(usernameInput, username);
+        type(passwordInput, password);
+        click(loginButton);
+    }
+
+    @Step("Read flash message")
+    public String getAlertText() {
+        return textOf(flashMessage);
     }
 }
