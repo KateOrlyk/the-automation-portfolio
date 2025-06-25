@@ -1,36 +1,46 @@
 package pages;
 
+import core.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class AlertPage {
-    private WebDriver driver;
+public class AlertPage extends BasePage {
 
-    private By jsAlertButton = By.xpath("//button[text()='Click for JS Alert']");
-    private By jsConfirmButton = By.xpath("//button[text()='Click for JS Confirm']");
-    private By jsPromptButton = By.xpath("//button[text()='Click for JS Prompt']");
-    private By resultText = By.id("result");
+    @FindBy(xpath = "//button[text()='Click for JS Alert']")
+    private WebElement jsAlertButton;
+
+    @FindBy(xpath = "//button[text()='Click for JS Confirm']")
+    private WebElement jsConfirmButton;
+
+    @FindBy(xpath = "//button[text()='Click for JS Prompt']")
+    private WebElement jsPromptButton;
+
+    @FindBy(id = "result")
+    private WebElement resultText;
 
     public AlertPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
+    @Step("Open Alert page")
     public void openPage() {
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
     }
 
     // private low-level clicks
     private void clickJSAlert() {
-        driver.findElement(jsAlertButton).click();
+        click(jsAlertButton);
     }
 
     private void clickJSConfirm() {
-        driver.findElement(jsConfirmButton).click();
+        click(jsConfirmButton);
     }
 
     private void clickJSPrompt() {
-        driver.findElement(jsPromptButton).click();
+        click(jsPromptButton);
     }
 
     private Alert switchToAlert() {
@@ -38,16 +48,19 @@ public class AlertPage {
     }
 
     // public high-level actions
+    @Step("Accept JS Alert")
     public void acceptJSAlert() {
         clickJSAlert();
         switchToAlert().accept();
     }
 
+    @Step("Dismiss JS confirm")
     public void dismissJSConfirm() {
         clickJSConfirm();
         switchToAlert().dismiss();
     }
 
+    @Step("Send text to JS prompt")
     public void sendTextToJSPrompt(String text) {
         clickJSPrompt();
         Alert alert = switchToAlert();
@@ -55,9 +68,8 @@ public class AlertPage {
         alert.accept();
     }
 
+    @Step("Get alert result text")
     public String getResultText() {
-        return driver.findElement(resultText)
-                .getText()
-                .trim();
+        return textOf(resultText);
     }
 }
