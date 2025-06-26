@@ -1,6 +1,7 @@
 # the-automation-portfolio
 
-**Automation portfolio:** Selenium WebDriver + JUnit tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/)
+**Automation portfolio:**  
+Selenium WebDriver + JUnit tests for [the-internet.herokuapp.com](https://the-internet.herokuapp.com/)
 
 ---
 
@@ -50,7 +51,7 @@
    ```bash
    git clone https://github.com/KateOrlyk/the-automation-portfolio.git
    cd the-automation-portfolio
-2. **Ensure ChromeDriver is in your PATH**
+2. **Ensure ChromeDriver is in your `PATH`**
 3. **Run tests**
    ```bash
    mvn clean test
@@ -72,7 +73,7 @@
     ```bash
     brew install allure
 - **Manual**
-Download ZIP from [Allure Releases](https://github.com/allure-framework/allure2/releases), unpack, and add bin/ to your PATH.
+Download ZIP from [Allure Releases](https://github.com/allure-framework/allure2/releases), unpack, and add `bin/` to your `PATH`.
 
 2. **Generate and view report**
     ```bash
@@ -86,6 +87,7 @@ Download ZIP from [Allure Releases](https://github.com/allure-framework/allure2/
 ---
 
 ## 🔮 Next Steps
+
 - Add explicit waits (`WebDriverWait`)
 - Capture screenshots on failure
 - Enable parallel test execution (JUnit 5)
@@ -93,7 +95,7 @@ Download ZIP from [Allure Releases](https://github.com/allure-framework/allure2/
 
 ---
 
-👩‍💻 Author
-Kateryna Orlyk
-QA Automation Engineer
+## 👩‍💻 Author
+Kateryna Orlyk  
+QA Automation Engineer  
 [LinkedIn](https://www.linkedin.com/in/kateryna-orlyk-a67a9b264/)
